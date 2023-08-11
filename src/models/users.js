@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const bcrypt= require("bcrypt")
 const jwt= require("jsonwebtoken")
 
-const User= mongoose.models("User",{
+const User= mongoose.model("User",{
     name: {
         require: true,
         type: String
@@ -22,12 +22,14 @@ const User= mongoose.models("User",{
     authTokens: 
        [{
         authToken:{
-            type: String,
-            require: true
+            type: String
         }
        }
-       ] 
-    
+    ],
+    access:{
+        type: String,
+        default: "user"
+    } 
 })
 
 module.exports= User
